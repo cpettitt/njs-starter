@@ -9,6 +9,7 @@
   "author": "Chris Pettitt <cpettitt@gmail.com>",
   "license": "BSD",
   "dependencies": {
-    "promzard": "^0.2.2"
+    "promzard": "^0.2.2",
+    "underscore": "^1.6.0"
   }
 }
