@@ -1,0 +1,14 @@
+{
+  "name": "njs-starter",
+  "version": "0.0.0",
+  "description": "A command-line tool for building a new NodeJS project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chris Pettitt <cpettitt@gmail.com>",
+  "license": "BSD",
+  "dependencies": {
+    "promzard": "^0.2.2"
+  }
+}
