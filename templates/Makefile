@@ -4,6 +4,7 @@ NPM = npm
 BROWSERIFY = ./node_modules/browserify/bin/cmd.js
 JSHINT = ./node_modules/jshint/bin/jshint
 JSCS = ./node_modules/jscs/bin/jscs
+MOCHA = ./node_modules/mocha/bin/_mocha
 UGLIFY = ./node_modules/uglify-js/bin/uglifyjs
 
 BUILD_DIR = build
@@ -20,6 +21,7 @@ lib/version.js: package.json
 	src/version.js > $@
 
 build/$(MOD).js: browser.js $(SRC_FILES) $(TEST_FILES) node_modules | build
+	$(MOCHA) $(TEST_FILES)
 	$(JSHINT) $(filter-out node_modules, $?) 
 	$(JSCS) $(filter-out node_modules, $?) 
 	$(BROWSERIFY) $< > $@
