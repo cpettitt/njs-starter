@@ -15,5 +15,9 @@
   },
   "bin": {
     "njs-starter": "bin/njs-starter"
+  },
+  "devDependencies": {
+    "jscs": "^1.5.9",
+    "jshint": "^2.5.3"
   }
 }
