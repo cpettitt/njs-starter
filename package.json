@@ -11,5 +11,8 @@
   "dependencies": {
     "promzard": "^0.2.2",
     "underscore": "^1.6.0"
+  },
+  "bin": {
+      "njs-starter": "bin/njs-starter"
   }
 }
