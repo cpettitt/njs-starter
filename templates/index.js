@@ -1,5 +1,6 @@
 /**
- * @license
 <%= licenseComment %>
  */
-module.exports = {};
+module.exports = {
+  version: require('./lib/version')
+};
