@@ -1,6 +1,7 @@
 var promzard = require('promzard'),
     fs = require('fs'),
     path = require('path'),
+    childproc = require('child_process'),
     _ = require('underscore'),
     cwd = process.cwd(),
     pkgIn = path.join(__dirname, 'lib/input.js'),
@@ -22,8 +23,10 @@ promzard(pkgIn, ctx, function(err, data) {
 
   writePackageJson(data);
   copyLicenseFile(data);
-
-  console.log('Done.');
+  installCommonDevLibraries(function(err) {
+    if (err) { throw err; }
+    console.log('Done.');
+  });
 });
 
 function bail(msg) {
@@ -59,4 +62,31 @@ function writePackageJson(data) {
   };
 
   fs.writeFileSync(pkgOut, JSON.stringify(contents, null, 2));
+}
+
+function installCommonDevLibraries(cb) {
+  var devLibs = [
+        // For producing the final JS
+        'browserify',
+        'uglify-js',
+
+        // For testing
+        'chai',
+        'mocha',
+
+        // For code cleanliness
+        'jscs',
+        'jshint'
+      ].sort(),
+      args = ['install', '--save'].concat(devLibs);
+
+  var proc = childproc.spawn('npm', args, { stdio: 'inherit' });
+  proc.on('error', function(err) { cb(err); })
+      .on('exit', function(code) {
+        if (code) {
+          cb(new Error('Installing ' + lib + ' failed. Errno: ' + code));
+        } else {
+          cb(null);
+        }
+      });
 }
