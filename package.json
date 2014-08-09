@@ -9,10 +9,11 @@
   "author": "Chris Pettitt <cpettitt@gmail.com>",
   "license": "BSD",
   "dependencies": {
+    "camelize": "^1.0.0",
     "promzard": "^0.2.2",
     "underscore": "^1.6.0"
   },
   "bin": {
-      "njs-starter": "bin/njs-starter"
+    "njs-starter": "bin/njs-starter"
   }
 }
